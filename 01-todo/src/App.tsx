@@ -7,7 +7,7 @@ import { Task } from "./components/Task/Task"
 import { useState } from "react"
 
 interface TaskProps {
-  id: number
+  id: string
   done: boolean
   content: string
 }
@@ -17,7 +17,13 @@ function App() {
 
   const tasksCompleted = tasks.filter(task => !!task.done)
 
-  function toggleTaskStatus(id: number, value: boolean) {
+  function createNewTask(newTask: TaskProps) {
+    if (newTask) {
+      setTasks([...tasks, newTask])
+    }
+  }
+
+  function toggleTaskStatus(id: string, value: boolean) {
     // TODO: toggle task status
   }
 
@@ -26,7 +32,7 @@ function App() {
       <Header />
       
       <div className="container">
-        <CreateTaskBar />
+        <CreateTaskBar onCreateTask={createNewTask}/>
         
         <section className={styles.taskList}>
           <header className={styles.sheetsContainer}>

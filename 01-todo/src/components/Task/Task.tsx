@@ -4,11 +4,11 @@ import styles from './Task.module.css'
 
 interface TaskProps {
   task: TaskContentProps
-  onToggleTaskStatus: (id: number, value: boolean) => void
+  onToggleTaskStatus: (id: string, value: boolean) => void
 }
 
 interface TaskContentProps {
-  id: number
+  id: string
   done: boolean
   content: string
 }
@@ -16,7 +16,7 @@ interface TaskContentProps {
 export function Task({ task, onToggleTaskStatus }: TaskProps){
   const taskStyleValidation = task.done ? `${styles.task} ${styles.done}` : styles.task
 
-  function handleCompleteTask(event: ChangeEvent<HTMLInputElement> ,id: number){
+  function handleCompleteTask(event: ChangeEvent<HTMLInputElement> ,id: string){
     onToggleTaskStatus(id, event.target.checked)
   }
 
