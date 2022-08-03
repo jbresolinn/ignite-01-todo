@@ -5,6 +5,7 @@ import styles from './App.module.css'
 import { Sheets } from "./components/Sheets/Sheets"
 import { Task } from "./components/Task/Task"
 import { useState } from "react"
+import { ClipboardText } from "phosphor-react"
 
 interface TaskProps {
   id: string
@@ -47,7 +48,18 @@ function App() {
           </header>
 
           <div className={styles.taskListContent}>
-            {tasks.map(task => <Task key={task.id} task={task} onToggleTaskStatus={toggleTaskStatus} onDeleteTask={deleteTask}/> )}
+            {tasks.length 
+              ? (tasks.map(task => 
+                  <Task key={task.id} task={task} onToggleTaskStatus={toggleTaskStatus} onDeleteTask={deleteTask}/> )
+                ) 
+              : (
+                  <div className={styles.noTasksContent}>
+                    <ClipboardText size={56} />
+                    <strong>Você ainda não tem tarefas cadastradas</strong>
+                    <span>Crie tarefas e organize seus itens a fazer</span>
+                  </div>
+                )
+            }
           </div>
         </section>
       </div>
