@@ -25,7 +25,11 @@ function App() {
   }
 
   function toggleTaskStatus(id: string, value: boolean) {
-    // TODO: toggle task status
+    const taskIndex = tasks.findIndex(task => task.id === id);
+
+    tasks[taskIndex].done = !tasks[taskIndex].done;
+
+    setTasks(tasks => [...tasks])
   }
 
   function deleteTask(id: string) {
@@ -49,8 +53,16 @@ function App() {
 
           <div className={styles.taskListContent}>
             {tasks.length 
-              ? (tasks.map(task => 
-                  <Task key={task.id} task={task} onToggleTaskStatus={toggleTaskStatus} onDeleteTask={deleteTask}/> )
+              ? (
+                  tasks.map(task => 
+                    <Task 
+                      key={task.id} 
+                      id={task.id}
+                      content={task.content}
+                      done={task.done} 
+                      onToggleTaskStatus={toggleTaskStatus} 
+                      onDeleteTask={deleteTask}
+                    />)
                 ) 
               : (
                   <div className={styles.noTasksContent}>

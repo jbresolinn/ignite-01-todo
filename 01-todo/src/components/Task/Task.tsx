@@ -3,19 +3,15 @@ import { ChangeEvent, FormEvent, InputHTMLAttributes } from 'react'
 import styles from './Task.module.css'
 
 interface TaskProps {
-  task: TaskContentProps
+  id: string
+  done: boolean
+  content: string
   onToggleTaskStatus: (id: string, value: boolean) => void
   onDeleteTask: (id: string) => void
 }
 
-interface TaskContentProps {
-  id: string
-  done: boolean
-  content: string
-}
-
-export function Task({ task, onToggleTaskStatus, onDeleteTask }: TaskProps){
-  const taskStyleValidation = task.done ? `${styles.task} ${styles.done}` : styles.task
+export function Task({ id, done, content, onToggleTaskStatus, onDeleteTask }: TaskProps){
+  const taskStyleValidation = done ? `${styles.task} ${styles.done}` : styles.task
 
   function handleCompleteTask(event: ChangeEvent<HTMLInputElement> ,id: string){
     onToggleTaskStatus(id, event.target.checked)
@@ -27,9 +23,9 @@ export function Task({ task, onToggleTaskStatus, onDeleteTask }: TaskProps){
 
   return (
     <div className={taskStyleValidation}>
-      <input type='checkbox' checked={task.done} onChange={(event) => handleCompleteTask(event, task.id)}/>
-      <p>{task.content}</p>
-      <button type='button' onClick={() => handleDeleteTask(task.id)}>
+      <input type='checkbox' onChange={(event) => handleCompleteTask(event, id)}/>
+      <p>{content}</p>
+      <button type='button' onClick={() => handleDeleteTask(id)}>
         <Trash size={24} />
       </button>
     </div>
