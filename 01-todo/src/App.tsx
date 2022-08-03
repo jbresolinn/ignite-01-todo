@@ -27,6 +27,12 @@ function App() {
     // TODO: toggle task status
   }
 
+  function deleteTask(id: string) {
+    const taskWithoutDeleteOne = tasks.filter(task => task.id !== id)
+
+    setTasks(taskWithoutDeleteOne)
+  }
+
   return (
     <div>
       <Header />
@@ -41,7 +47,7 @@ function App() {
           </header>
 
           <div className={styles.taskListContent}>
-            {tasks.map(task => <Task key={task.id} task={task} onToggleTaskStatus={toggleTaskStatus} /> )}
+            {tasks.map(task => <Task key={task.id} task={task} onToggleTaskStatus={toggleTaskStatus} onDeleteTask={deleteTask}/> )}
           </div>
         </section>
       </div>

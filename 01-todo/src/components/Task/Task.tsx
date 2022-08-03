@@ -5,6 +5,7 @@ import styles from './Task.module.css'
 interface TaskProps {
   task: TaskContentProps
   onToggleTaskStatus: (id: string, value: boolean) => void
+  onDeleteTask: (id: string) => void
 }
 
 interface TaskContentProps {
@@ -13,18 +14,22 @@ interface TaskContentProps {
   content: string
 }
 
-export function Task({ task, onToggleTaskStatus }: TaskProps){
+export function Task({ task, onToggleTaskStatus, onDeleteTask }: TaskProps){
   const taskStyleValidation = task.done ? `${styles.task} ${styles.done}` : styles.task
 
   function handleCompleteTask(event: ChangeEvent<HTMLInputElement> ,id: string){
     onToggleTaskStatus(id, event.target.checked)
   }
 
+  function handleDeleteTask(id: string) {
+    onDeleteTask(id)
+  }
+
   return (
     <div className={taskStyleValidation}>
       <input type='checkbox' checked={task.done} onChange={(event) => handleCompleteTask(event, task.id)}/>
       <p>{task.content}</p>
-      <button type='button'>
+      <button type='button' onClick={() => handleDeleteTask(task.id)}>
         <Trash size={24} />
       </button>
     </div>
