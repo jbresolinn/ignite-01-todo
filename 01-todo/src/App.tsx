@@ -4,16 +4,22 @@ import { Header } from "./components/Header/Header"
 import styles from './App.module.css'
 import { Sheets } from "./components/Sheets/Sheets"
 import { Task } from "./components/Task/Task"
+import { useState } from "react"
 
-const tasks = [
-  {id: 1, done: false, content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.'},
-  {id: 2, done: false, content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.'},
-  {id: 3, done: true, content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.'},
-  {id: 4, done: true, content: 'Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.'},
-]
+interface TaskProps {
+  id: number
+  done: boolean
+  content: string
+}
 
 function App() {
+  const [tasks, setTasks] = useState<TaskProps[]>([])
+
   const tasksCompleted = tasks.filter(task => !!task.done)
+
+  function toggleTaskStatus(id: number, value: boolean) {
+    // TODO: toggle task status
+  }
 
   return (
     <div>
@@ -29,7 +35,7 @@ function App() {
           </header>
 
           <div className={styles.taskListContent}>
-            {tasks.map(task => <Task key={task.id} done={task.done} content={task.content} /> )}
+            {tasks.map(task => <Task key={task.id} task={task} onToggleTaskStatus={toggleTaskStatus} /> )}
           </div>
         </section>
       </div>
