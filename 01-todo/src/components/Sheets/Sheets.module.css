@@ -1,0 +1,29 @@
+.sheets {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sheets label {
+  font-weight: bold;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.sheets label.labelPrimary {
+  color: var(--blue-500);
+}
+
+.sheets label.labelSecondary {
+  color: var(--purple-500);
+}
+
+.sheets span {
+  font-weight: bold;
+  font-size: 0.75rem;
+  color: var(--gray-200);
+  line-height: 1.4;
+  padding: 0.125rem 0.5rem;
+  background: var(--gray-400);
+  border-radius: 1rem;
+}

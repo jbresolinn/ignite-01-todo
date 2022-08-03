@@ -3,7 +3,6 @@ import styles from './CreateTaskBar.module.css'
 
 export function CreateTaskBar(){
   return (
-    <div className='container'>
       <div className={styles.createtaskbar}>
         <input type='text' name='newTask' placeholder='Adicione uma nova tarefa'/>
         <button type='button'>
@@ -11,6 +10,5 @@ export function CreateTaskBar(){
           <PlusCircle size={16} />
         </button>
       </div>
-    </div>
   )
 }
