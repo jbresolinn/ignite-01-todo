@@ -2,6 +2,7 @@
   "name": "01-todo",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://jbresolinn.github.io/ignite-01-todo",
   "author": {
     "name": "Julia Bresolin",
     "email": "juliabresolin2@gmail.com"
@@ -11,7 +12,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "phosphor-react": "^1.4.1",
