@@ -1,8 +1,8 @@
 {
   "name": "01-todo",
   "private": true,
-  "version": "0.0.0",
-  "homepage": "https://jbresolinn.github.io/ignite-01-todo",
+  "version": "0.0.1",
+  "homepage": "new-todo-roan.vercel.app/",
   "author": {
     "name": "Julia Bresolin",
     "email": "juliabresolin2@gmail.com"
@@ -12,7 +12,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "vercel"
   },
   "dependencies": {
     "phosphor-react": "^1.4.1",
